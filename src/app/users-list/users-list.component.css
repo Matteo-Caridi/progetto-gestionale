@@ -1,0 +1,15 @@
+.container {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+li {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,109 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="container" *ngIf="showTable">
+    <section class="pt-4 pt-4 text-center mt-4 mb-4">
+        <div class="table-responsive-sm table-borderless">
+            <table class="table">
+                <tr>
+                    <th>First name</th>
+                    <td>{{user?.firstName}}</td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td>{{user?.lastName}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{user?.address}}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{user?.phone}}</td>
+                </tr>
+
+                <tr>
+                    <th>Username</th>
+                    <td>{{user?.username}}</td>
+                </tr>
+
+                <tr>
+                    <th>Password</th>
+                    <td>{{user?.password}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="btn-container">
+            <button type="button" class="btn btn-light btn-lg" (click)="updateUser()">Update</button>
+            <button type="button" class="btn btn-danger btn-lg" (click)="deleteUser()">Delete</button>
+        </div>
+
+    </section>
+</div>
+
+<div class="container" *ngIf="showForm">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">First Name
+                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="alert">
+                    <div *ngIf="firstName?.errors?.['required']">
+                        First name is required!
+                    </div>
+                </div>
+            </label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name"
+                formControlName="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">
+                Last Name
+                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert">
+                    <div *ngIf="lastName?.errors?.['required']">
+                        Last name is required!
+                    </div>
+                </div>
+            </label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name"
+                formControlName="lastName">
+        </div>
+        <div class=" form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="Enter your address"
+                formControlName="address">
+        </div>
+        <div class=" form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter your phone number"
+                formControlName="phone">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username"
+                formControlName="username">
+        </div>
+        <div class="form-group">
+            <label for="password">
+                Password
+                <label for="lastName">
+                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert">
+
+                        Password it must be at least 5 character!
+
+                    </div>
+                </label>
+            </label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                formControlName="password">
+        </div>
+
+        <div class="btn-container-update">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.pristine || userForm.invalid"
+                *ngIf="!id">
+                Register
+            </button>
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.pristine || userForm.invalid"
+                *ngIf="id">
+                Update
+            </button>
+        </div>
+    </form>
+</div>
