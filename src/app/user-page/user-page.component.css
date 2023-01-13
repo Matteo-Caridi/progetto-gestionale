@@ -15,8 +15,10 @@
 
 .table th {
     text-align: justify;
+    border-bottom: 2px solid rgba(var(--bs-light-rgb)) !important;
 }
 
 .table td {
     text-align: right;
+    border-bottom: 2px solid rgba(var(--bs-light-rgb)) !important;
 }
