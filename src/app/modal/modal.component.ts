@@ -42,7 +42,7 @@ export class ModalComponent implements OnInit {
 			<p>Utente {{type}} correttamente</p>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+			<button type="button" class="btn btn-outline-dark rounded-0" (click)="activeModal.close('Close click')">Close</button>
 		</div>
 	`,
   styleUrls: ['./modal.component.css']
@@ -52,20 +52,24 @@ export class NgbdModalContent {
   constructor(public activeModal: NgbActiveModal) { }
 }
 
+//Modale Cancellazione
+
 @Component({
   selector: 'ngbd-modal-content',
   template: `
-    <div class="modal-header">
+    <div class="modal-header modal-header-danger">
       <p>Cancellazione utente</p>
     </div>
 		<div class="modal-body">
 			<p>E' sicuro di voler eliminare l'utente {{user?.firstName}} {{user?.lastName}}?</p>
 		</div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="deleteModal.close('Ok click')" (click)="deleteUser()">Ok</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="deleteModal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger rounded-0" (click)="deleteModal.close('Ok click')" (click)="deleteUser()">Ok</button>
+    <button type="button" class="btn btn-outline-secondary rounded-0" (click)="deleteModal.dismiss('cancel click')">Cancel</button>
   </div>
 	`,
+  styleUrls: ['./modal.component.css']
+
 })
 export class NgbdModalContentDelete {
 
@@ -101,8 +105,8 @@ export class NgbdModalContentDelete {
 			<p>Sono presenti delle modifiche non salvate. Si intende proseguire?</p>
 		</div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="deleteModal.close('Ok click')">Ok</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="deleteModal.dismiss('cancel click')" >Cancel</button>
+    <button type="button" class="btn btn-danger rounded-0" (click)="deleteModal.close('Ok click')">Ok</button>
+    <button type="button" class="btn btn-outline-secondary rounded-0" (click)="deleteModal.dismiss('cancel click')" >Cancel</button>
   </div>
 	`,
 })
