@@ -55,12 +55,15 @@ export class NgbdModalContent {
 @Component({
   selector: 'ngbd-modal-content',
   template: `
+    <div class="modal-header">
+      <p>Cancellazione utente</p>
+    </div>
 		<div class="modal-body">
 			<p>E' sicuro di voler eliminare l'utente {{user?.firstName}} {{user?.lastName}}?</p>
 		</div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="deleteModal.dismiss('cancel click')">Cancel</button>
     <button type="button" class="btn btn-danger" (click)="deleteModal.close('Ok click')" (click)="deleteUser()">Ok</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="deleteModal.dismiss('cancel click')">Cancel</button>
   </div>
 	`,
 })

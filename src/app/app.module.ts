@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common'
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalComponent } from './modal/modal.component';
-import { RegisterComponent } from './register/register.component';
+import { NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { RegisterComponent } from './register/register.component';
     UserRegisterComponent,
     UsersListComponent,
     ModalComponent,
-    RegisterComponent,
     UserPageComponent
   ],
   imports: [
@@ -39,7 +38,8 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule
   ],
   providers: [
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    NgbCarouselConfig
   ],
   bootstrap: [AppComponent]
 })

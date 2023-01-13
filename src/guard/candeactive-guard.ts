@@ -1,4 +1,3 @@
-import { RegisterComponent } from '../app/register/register.component';
 import { Injectable } from '@angular/core';
 import { CanDeactivate, UrlTree } from '@angular/router';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';

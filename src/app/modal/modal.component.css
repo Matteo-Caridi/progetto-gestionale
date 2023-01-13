@@ -14,6 +14,14 @@
     padding: 35px;
 }
 
+.modal-header-danger {
+    background: #c94747;
+    position: relative;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    padding: 35px;
+}
+
 .modal-confirm .icon-box i {
     font-size: 64px;
     margin: -4px 0 0 -4px;

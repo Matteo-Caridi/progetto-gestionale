@@ -56,13 +56,13 @@
         </div>
 
         <div class="btn-container">
-            <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.pristine || userForm.invalid"
+            <button type="submit" class="btn btn-success btn-lg" [disabled]="userForm.pristine || userForm.invalid"
                 *ngIf="!id">
-                Register
+                Registra
             </button>
-            <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.pristine || userForm.invalid"
+            <button type="submit" class="btn btn-success btn-lg" [disabled]="userForm.pristine || userForm.invalid"
                 *ngIf="id">
-                Update
+                Aggiorna
             </button>
         </div>
     </form>
