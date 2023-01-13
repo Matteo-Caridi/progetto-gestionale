@@ -25,23 +25,8 @@ label {
 }
 
 .btn-container {
-    width: 70%;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-}
-
-.btn-container-update {
     width: 50%;
     margin: auto;
     display: flex;
     justify-content: center;
-}
-
-.table th {
-    text-align: right;
-}
-
-.table td {
-    text-align: center;
 }

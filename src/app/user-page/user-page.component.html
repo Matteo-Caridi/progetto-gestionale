@@ -1,0 +1,41 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="container" *ngIf="showTable">
+    <section class="pt-4 pt-4 text-center mt-4 mb-4">
+        <div class="table-responsive-sm table-borderless">
+            <table class="table">
+                <tr>
+                    <th>First name</th>
+                    <td>{{user?.firstName}}</td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td>{{user?.lastName}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{user?.address}}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{user?.phone}}</td>
+                </tr>
+
+                <tr>
+                    <th>Username</th>
+                    <td>{{user?.username}}</td>
+                </tr>
+
+                <tr>
+                    <th>Password</th>
+                    <td>{{user?.password}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="btn-container">
+            <button type="button" class="btn btn-light btn-lg" routerLink="/userRegister/{{user.id}}">Update</button>
+            <button type="button" class="btn btn-danger btn-lg" (click)="deleteUser()">Delete</button>
+        </div>
+
+    </section>
+</div>

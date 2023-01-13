@@ -3,7 +3,7 @@
 <div class="container">
     <section class="pt-4 pt-4 text-center mt-4 mb-4">
         <div class="list-group">
-            <a *ngFor="let user of users;" routerLink="/user/{{user.id}}"
+            <a *ngFor="let user of users;" routerLink="/userPage/{{user.id}}"
                 class="list-group-item list-group-item-action">{{user.firstName}}
                 {{user.lastName}}</a>
         </div>

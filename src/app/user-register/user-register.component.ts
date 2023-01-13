@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
-import { ModalComponent } from './../modal/modal.component';
-import { User } from './../../interfaces/user';
+import { ModalComponent } from '../modal/modal.component';
+import { User } from '../../interfaces/user';
 import { CrudMethodsService } from '../../service/crud-methods.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms'
@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 import { TypeModal } from '../../enum/enum';
 
 @Component({
-  selector: 'app-user-page',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-user-register',
+  templateUrl: './user-register.component.html',
+  styleUrls: ['./user-register.component.css']
 })
-export class UserPageComponent implements OnInit {
+export class UserRegisterComponent implements OnInit {
 
   id?: number;
   showTable: boolean = false;
@@ -38,27 +38,6 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserById();
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000);
-  }
-
-  getUserById() {
-    this.id = (Number(this.activatedRoute.snapshot.paramMap.get('id')));
-    if (this.id) {
-      this.spinner.show();
-      this.showTable = true;
-
-      this.service.getUser(this.id).subscribe(result => {
-        if (result) {
-          this.user = result;
-          this.spinner.hide();
-        }
-      })
-    } else {
-      this.showForm = true;
-    }
   }
 
   createForm() {
@@ -92,15 +71,27 @@ export class UserPageComponent implements OnInit {
     return this.userForm.get('password');
   }
 
-  updateUser() {
-    this.spinner.show();
-    setTimeout(() => {
-      this.showTable = false;
-      this.showForm = true;
-      this.populateForm();
-      this.spinner.hide();
-    }, 1500);
-
+  getUserById() {
+    this.id = (Number(this.activatedRoute.snapshot.paramMap.get('id')));
+    if (this.id) {
+      this.service.getUser(this.id).subscribe(result => {
+        if (result) {
+          this.user = result;
+          this.spinner.show();
+          setTimeout(() => {
+            this.populateForm();
+            this.spinner.hide();
+            this.showForm = true;
+          }, 1500);
+        }
+      })
+    } else {
+      this.spinner.show();
+      setTimeout(() => {
+        this.spinner.hide();
+        this.showForm = true;
+      }, 1500);
+    }
   }
 
   populateForm() {
@@ -131,10 +122,10 @@ export class UserPageComponent implements OnInit {
   onSubmit() {
     if (this.userForm.valid) {
       this.spinner.show();
-
       if (this.id) {
         //modifica
         this.service.updateUser(this.createUserObj()).subscribe(result => {
+          this.unSaved = false;
           this.spinner.hide();
           this.modalComponent.openModal(TypeModal.Update);
           this.route.navigate(['userList']);
@@ -142,6 +133,7 @@ export class UserPageComponent implements OnInit {
       } else {
         //creazione
         this.service.createUser(this.createUserObj()).subscribe(result => {
+          this.unSaved = false;
           this.spinner.hide();
           this.modalComponent.openModal(TypeModal.Create);
           this.route.navigate(['userList']);
@@ -150,15 +142,13 @@ export class UserPageComponent implements OnInit {
     }
   }
 
-  deleteUser() {
-    this.modalComponent.openDeleteModal(this.user);
-  }
-
   canDeactivate(): Observable<boolean> | boolean {
-
-    if (this.unSaved) {
-      const result = window.confirm('There are unsaved changes! Are you sure?');
-      return of(result);
+    if (!this.showTable) {
+      if (this.unSaved && !this.userForm.pristine) {
+        const result = window.confirm('There are unsaved changes! Are you sure?');
+        return of(result);
+      }
+      return true;
     }
     return true;
   }

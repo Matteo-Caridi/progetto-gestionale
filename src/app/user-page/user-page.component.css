@@ -1,0 +1,22 @@
+.container {
+    height: 90vh;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-container {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.table th {
+    text-align: justify;
+}
+
+.table td {
+    text-align: right;
+}
