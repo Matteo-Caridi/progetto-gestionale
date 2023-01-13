@@ -11,22 +11,22 @@ export class CrudMethodsService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    const url = 'https://retoolapi.dev/lpf3t2/userManager';
+    const url = 'https://retoolapi.dev/ZoYs6o/userManager';
     return this.httpClient.get(url) as Observable<User[]>;
   }
 
   getUser(id: number): Observable<User> {
-    const url = 'https://retoolapi.dev/lpf3t2/userManager/' + id;
+    const url = 'https://retoolapi.dev/ZoYs6o/userManager/' + id;
     return this.httpClient.get(url) as Observable<User>;
   }
 
   createUser(user: User) {
-    const url = 'https://retoolapi.dev/lpf3t2/userManager/';
+    const url = 'https://retoolapi.dev/ZoYs6o/userManager/';
     return this.httpClient.post(url, user);
   }
 
   updateUser(user: User) {
-    const url = 'https://retoolapi.dev/lpf3t2/userManager/' + user.id;
+    const url = 'https://retoolapi.dev/ZoYs6o/userManager/' + user.id;
     return this.httpClient.put(url, user);
   }
 

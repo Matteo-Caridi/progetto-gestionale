@@ -82,7 +82,7 @@ export class UserRegisterComponent implements OnInit {
             this.populateForm();
             this.spinner.hide();
             this.showForm = true;
-          }, 1500);
+          }, 1000);
         }
       })
     } else {

@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.spinner.hide();
-    }, 1500);
+    }, 1000);
   }
 
 }
