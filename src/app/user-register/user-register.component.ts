@@ -145,7 +145,7 @@ export class UserRegisterComponent implements OnInit {
   canDeactivate(): Observable<boolean> | boolean {
     if (!this.showTable) {
       if (this.unSaved && !this.userForm.pristine) {
-        const result = window.confirm('There are unsaved changes! Are you sure?');
+        const result = window.confirm('Ci sono delle modifiche non salvate. Si intende proseguire?');
         return of(result);
       }
       return true;
