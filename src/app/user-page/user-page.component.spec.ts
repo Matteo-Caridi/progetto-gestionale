@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserPageComponent } from './user-page.component';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserPageComponent', () => {
   let component: UserPageComponent;
@@ -8,9 +10,19 @@ describe('UserPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserPageComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [UserPageComponent],
+      providers: [{
+        provide: ActivatedRoute, useValue: {
+          snapshot: {
+            paramMap: convertToParamMap({
+              id: '1'
+            })
+          }
+        }
+      }]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,5 +1,8 @@
+import { CrudMethodsService } from './../../service/crud-methods.service';
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersListComponent } from './users-list.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('UsersListComponent', () => {
   let component: UsersListComponent;
@@ -7,6 +10,7 @@ describe('UsersListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [UsersListComponent]
     })
       .compileComponents();
